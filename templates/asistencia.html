@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registro de asistencia</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 24px 16px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f3f6fb;
+            color: #1f2937;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .card {
+            width: 100%;
+            max-width: 420px;
+            background: #fff;
+            padding: 28px;
+            border-radius: 16px;
+            box-shadow: 0 8px 28px rgba(15, 23, 42, .08);
+        }
+        h1 { margin-top: 0; font-size: 26px; }
+        p { line-height: 1.5; color: #4b5563; }
+        label { display: block; margin: 18px 0 7px; font-weight: 600; }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            margin-top: 24px;
+            padding: 13px;
+            border: 0;
+            border-radius: 8px;
+            background: #1d4ed8;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        button:hover { background: #1e40af; }
+        .error {
+            padding: 10px 12px;
+            border-radius: 8px;
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        .small { font-size: 13px; }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <h1>Registro de asistencia</h1>
+        <p>Ingresa tus datos para registrar tu asistencia.</p>
+
+        {% if error %}
+            <p class="error" role="alert">{{ error }}</p>
+        {% endif %}
+
+        <form action="{{ url_for('registrar') }}" method="POST">
+            <label for="nombre">Nombre</label>
+            <input
+                id="nombre"
+                name="nombre"
+                type="text"
+                maxlength="100"
+                autocomplete="given-name"
+                value="{{ nombre|default('', true) }}"
+                required
+            >
+
+            <label for="apellido">Apellido</label>
+            <input
+                id="apellido"
+                name="apellido"
+                type="text"
+                maxlength="100"
+                autocomplete="family-name"
+                value="{{ apellido|default('', true) }}"
+                required
+            >
+
+            <button type="submit">Registrar asistencia</button>
+        </form>
+
+        <p class="small">Al enviar, se guardarán tus datos junto con la fecha y hora del registro.</p>
+    </main>
+</body>
+</html>

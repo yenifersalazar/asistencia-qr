@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Asistencia por QR</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f6fb;
+            text-align: center;
+            padding: 35px 15px;
+            color: #1f2937;
+        }
+
+        .card {
+            background: white;
+            max-width: 450px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 16px;
+        }
+
+        img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <main class="card">
+        <h1>Registro de asistencia</h1>
+        <p>Escanea este código QR con tu celular.</p>
+
+        <img
+            src="{{ url_for('static', filename='codigo_qr.png') }}"
+            alt="Código QR de asistencia"
+        >
+
+        <p>Conéctate a la misma red Wi-Fi que este computador.</p>
+    </main>
+</body>
+</html>

@@ -1,0 +1,59 @@
+Manual rápido de instalación y ejecución. Proyecto de registro de asistencia mediante código QR
+
+Sigue estos pasos en orden para instalar y ejecutar el proyecto en otro computador con Windows.
+1. Instalar los programas
+
+    1. Instala Git: https://git-scm.com/download/win
+
+    2. Instala Python: https://www.python.org/downloads/windows/ (marca la opción Add Python to PATH durante la instalación).
+
+    3. Instala Visual Studio Code: https://code.visualstudio.com/
+
+2. Descargar el proyecto desde la URL que se suministró.
+
+    4. Abre una terminal de Windows y ejecuta:
+        git clone URL_DEL_REPOSITORIO(Reemplaza URL_DEL_REPOSITORIO por el enlace real del proyecto.)
+
+    5. Entra en la carpeta descargada:
+        cd NOMBRE_DEL_PROYECTO
+
+    6. Abre el proyecto en Visual Studio Code
+
+3. Preparar el proyecto
+
+
+    7. Instala las dependencias:
+        py -m pip install -r requirements.txt
+
+
+4. Configurar la dirección IP
+
+    8. Abre el archivo .env y actualiza la IP con la dirección IPv4 del computador donde se ejecutará el proyecto. Para consultarla, ejecuta ipconfig en la terminal y busca Dirección IPv4.
+        El archivo debe quedar así, usando los valores reales del computador:
+        IP_LOCAL=111.111.1.20
+        PORT=5000
+
+5. Generar el QR y ejecutar (Abrir la termianl del visual studio)
+
+    9. Genera el código QR:
+    py generar_qr.py
+
+    10. Inicia la aplicación:
+    py app.py
+
+    Importante: deja abierta la terminal mientras se utiliza el sistema.
+
+
+6. Probar el sistema
+
+    11. Desde el mismo computador, abre en el navegador:
+        http://127.0.0.1:5000/ (cambiar la IP por la anteriormente parametrizada)
+
+    12. Desde un celular conectado a la misma red Wi-Fi, escanea el QR o abre:
+        http://IP_DEL_COMPUTADOR:5000/qr
+
+    Reemplaza IP_DEL_COMPUTADOR por la IPv4 configurada en el archivo .env.
+
+    13. Registra una asistencia y verifica que los datos queden guardados en data/asistencias.xlsx.
+
+Nota: si el celular no logra abrir la página, revisa que ambos dispositivos estén conectados a la misma red Wi-Fi y que el firewall permita la conexión.
